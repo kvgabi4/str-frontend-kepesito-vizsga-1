@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row col-10 offset-1">
+    <h4 class="font-weight-bold">{{contributor}}'s repositories<hr></h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name of repo</th>
+          <th>Forked?</th>
+          <th>Stargazers</th>
+          <th>Last update</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let repo of repos$ | async">
+          <td>{{repo.name}}</td>
+          <td>{{repo.fork}}</td>
+          <td>{{repo.stargazers_count}}</td>
+          <td>{{repo.updated_at}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

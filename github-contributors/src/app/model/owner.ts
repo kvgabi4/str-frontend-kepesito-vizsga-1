@@ -1,9 +1,9 @@
-export class Contributor {
+export class Owner {
   login: string = '';
   id: number = 0;
   node_id: string = '';
   avatar_url: string = '';
-  gravatar_id: string = '';
+  gravatar_id: number = 0;
   url: string = '';
   html_url: string = '';
   followers_url: string = '';
@@ -16,6 +16,5 @@ export class Contributor {
   events_url: string = '';
   received_events_url: string = '';
   type: string = '';
-  site_admin: string = '';
-  contributions: number = 0;
+  site_admin: boolean = false
 }

@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   contributors$: Observable<Contributor[]> = this.contributorService.getAll();
 
   constructor(
-    private contributorService: ContributorService
+    private contributorService: ContributorService,
   ) { }
 
   ngOnInit(): void {
