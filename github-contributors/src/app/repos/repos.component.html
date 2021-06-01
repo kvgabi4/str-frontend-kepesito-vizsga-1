@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row col-10 offset-1">
-    <h4 class="font-weight-bold">{{contributor}}'s repositories<hr></h4>
-    <table class="table">
+  <div class="row col-md-10 col-12 offset-md-1">
+    <h4 class="font-weight-bold p-0 mt-3">{{contributor}}'s repositories<hr></h4>
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Name of repo</th>
@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let repo of repos$ | async">
+        <tr *ngFor="let repo of repos$ | async | sort:'updated_at'">
           <td>{{repo.name}}</td>
           <td>{{repo.fork}}</td>
           <td>{{repo.stargazers_count}}</td>
@@ -19,6 +19,11 @@
         </tr>
       </tbody>
     </table>
+
+    <button
+      class="btn btn-outline-primary text-uppercase mb-5"
+      [routerLink]="['']"
+    >Back to the contributros</button>
   </div>
 </div>
 
