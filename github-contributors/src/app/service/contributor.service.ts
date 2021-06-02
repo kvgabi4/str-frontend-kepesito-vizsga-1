@@ -9,7 +9,7 @@ import { Repo } from '../model/repo';
 })
 export class ContributorService {
 
-  api_url: string = 'https://api.github.com/repos/angular/angular/contributors?page=1&per_page=25';
+  api_url: string = 'https://api.github.com/repos/angular/angular/contributors?page=1&per_page=100';
 
   constructor(
     private http: HttpClient
