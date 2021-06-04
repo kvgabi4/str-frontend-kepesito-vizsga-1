@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
 import { Contributor } from '../model/contributor';
@@ -11,43 +12,38 @@ import { ContributorService } from '../service/contributor.service';
 })
 export class ListComponent implements OnInit {
 
-  contributors$: Observable<Contributor[]> = this.contributorService.getAll();
+  page: number = 1
+  actualContributors: number = 25;
 
-  // notEmptyPost = true;
-  // notscrolly = true;
+  contributors$: Observable<Contributor[]> = this.contributorService.getAll(this.page, this.actualContributors);
+
 
   constructor(
     private contributorService: ContributorService,
     private spinner: NgxSpinnerService,
+    private router: Router,
   ) { }
 
-  ngOnInit(): void {
-    // /** spinner starts on init */
-    //   this.spinner.show();
-
-    //   setTimeout(() => {
-    //     /** spinner ends after 5 seconds */
-    //     this.spinner.hide();
-    //   }, 5000);
-  }
+  ngOnInit(): void {}
 
   onScroll() {
     // console.log('scrolled!!');
-    // if (this.notscrolly && this.notEmptyPost) {
-    //   this.spinner.show();
-    //   setTimeout(() => {
-    //     /** spinner ends after 5 seconds */
-    //     this.spinner.hide();
-    //   }, 2000);
-    //   this.notscrolly = false;
-    // }
-      /** spinner starts on init */
-      this.spinner.show();
+    this.actualContributors += 25;
+    this.contributors$ = this.contributorService.getAll(this.page, this.actualContributors)
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.navigate([this.router.url]);
+    // this.contributors$.subscribe(
+    //   contribs => {
+    //     this.contributors = contribs
+    //   },
 
-      setTimeout(() => {
-        /** spinner ends after 5 seconds */
-        this.spinner.hide();
-      }, 1000);
+    // /** spinner starts on init */
+      // this.spinner.show();
+
+      // setTimeout(() => {
+      //   /** spinner ends after 5 seconds */
+      //   this.spinner.hide();
+      // }, 1000);
   }
 
 }

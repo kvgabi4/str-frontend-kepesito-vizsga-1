@@ -1,16 +1,16 @@
 <div class="card border-light m-2 p-4 h-100">
   <div class="d-flex justify-content-between">
     <div class="d-flex">
-      <img class="img-thumbnail m-2" width="90" height="90" [src]="contributor.avatar_url" alt="">
+      <img class="img-thumbnail m-2 mt-0" width="90" height="90" [src]="contributor.avatar_url" alt="">
       <p class="text-secondary mt-auto mb-1 ml-2">@github</p>
     </div>
     <h2 class="ml-auto"><i class="fa fa-crosshairs"></i></h2>
   </div>
-  <div class="card-body">
+  <div class="card-body pb-0">
     <h5 class="card-title font-weight-bold">{{contributor.login}}</h5>
     <p class="card-text text-secondary">{{contributor.contributions}} commits</p>
   </div>
-  <button class="btn btn-outline-primary text-uppercase mx-auto mb-4 mt-auto"
+  <button class="btn btn-outline-primary text-uppercase mx-auto mb-0 mt-auto"
     [routerLink]="[contributor.login]"
     >View repositories</button>
 </div>
