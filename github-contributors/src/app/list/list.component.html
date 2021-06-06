@@ -1,25 +1,26 @@
 <div class="container bg-light mb-5">
-  <h4 class="font-weight-bold p-3">Top contributors<hr></h4>
-  <div
+  <h4 class="font-weight-bold p-3">Top contributors
+    <hr>
+  </h4>
+  <!-- <div
     class="search-results"
     infiniteScroll
     [infiniteScrollDistance]="0"
     [infiniteScrollThrottle]="50"
     (scrolled)="onScroll()"
-    >
-    <div class="row w-100 m-0">
-      <div class="col-12 d-flex flex-row flex-wrap justify-content-center">
-        <app-card
-          *ngFor="let contributor of contributors$ | async | sort:'contributions'"
-          [contributor]="contributor"
-          class="col-12 col-md-6 col-lg-4 col-xl-3 p-0 mb-3"
-        ></app-card>
+    > -->
+  <div class="row w-100 m-0">
+    <div class="col-12 d-flex flex-row flex-wrap justify-content-center">
+      <div *ngFor="let contributor of contributors | sort:'contributions'"
+        class="col-12 col-md-6 col-lg-4 col-xl-3 p-0 mb-3">
+        <app-card [contributor]="contributor"></app-card>
       </div>
-      <div class="m-5"></div>
     </div>
+    <div class="m-5"></div>
   </div>
-
 </div>
+
+<!-- </div> -->
 <!-- <div class="row pb-5">
   <div class="spinner col-md-12 p-5">
     <ngx-spinner
