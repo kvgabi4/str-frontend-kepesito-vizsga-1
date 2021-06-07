@@ -40,6 +40,7 @@ export class ListComponent implements OnInit {
     this.contributorService.getAll(this.page, this.actualContributors).subscribe(
       response => {
         this.contributors = response;
+        window.scroll();
       }, error => {
         this.toastrService.error('Error loading contributors', 'Major Error');
       }
