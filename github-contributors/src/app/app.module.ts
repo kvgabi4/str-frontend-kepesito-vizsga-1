@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -24,7 +23,6 @@ import { SortPipe } from './pipe/sort.pipe'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    InfiniteScrollModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 6000,

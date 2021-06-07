@@ -24,7 +24,6 @@ export class ListComponent implements OnInit {
         response => this.contributors = response
         );
       this.actualContributors += 25;
-      // console.log(this.actualContributors);
       // this.contributors$ = this.contributorService.getAll(this.page, this.actualContributors);
     }
   }, error => {

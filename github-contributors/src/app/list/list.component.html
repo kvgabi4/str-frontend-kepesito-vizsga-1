@@ -2,13 +2,6 @@
   <h4 class="font-weight-bold p-3">Top contributors
     <hr>
   </h4>
-  <!-- <div
-    class="search-results"
-    infiniteScroll
-    [infiniteScrollDistance]="0"
-    [infiniteScrollThrottle]="50"
-    (scrolled)="onScroll()"
-    > -->
   <div class="row w-100 m-0">
     <div class="col-12 d-flex flex-row flex-wrap justify-content-center">
       <div *ngFor="let contributor of contributors | sort:'contributions'"
