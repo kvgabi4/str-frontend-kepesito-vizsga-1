@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { fromEvent, Observable } from 'rxjs';
 import { Contributor } from '../model/contributor';
 import { ContributorService } from '../service/contributor.service';
@@ -19,7 +18,7 @@ export class ListComponent implements OnInit {
   // contributors$: Observable<Contributor[]> = this.contributorService.getAll(this.page, this.actualContributors);
   contributors: Contributor[] = [];
 
-  eventSubscription = fromEvent(window, "scroll").subscribe(e => {
+  eventSubscription = fromEvent(window, "scroll").subscribe(() => {
     if (this.bottomReached()) {
       this.actualContributors += 25;
       this.contributorService.getAll(this.page, this.actualContributors).subscribe(
@@ -27,17 +26,22 @@ export class ListComponent implements OnInit {
       );
       // this.contributors$ = this.contributorService.getAll(this.page, this.actualContributors);
     }
+  }, error => {
+    this.toastrService.error('Error loading contributors', 'Major Error');
   });
 
   constructor(
     private contributorService: ContributorService,
-    private spinner: NgxSpinnerService,
-    private router: Router,
-  ) { }
+    private toastrService: ToastrService,
+  ) {}
 
   ngOnInit(): void {
     this.contributorService.getAll(this.page, this.actualContributors).subscribe(
-      response => this.contributors = response
+      response => {
+        this.contributors = response
+      }, error => {
+        this.toastrService.error('Error loading contributors', 'Major Error');
+      }
     );
   }
 
@@ -45,17 +49,9 @@ export class ListComponent implements OnInit {
     return (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
   }
 
-
   // onScroll() {
   //   this.actualContributors += 25;
   //   this.contributors$ = this.contributorService.getAll(this.page, this.actualContributors);
-
-  //     // /** spinner starts on init */
-  //     // this.spinner.show();
-  //     // setTimeout(() => {
-  //     //   /** spinner ends after 5 seconds */
-  //     //   this.spinner.hide();
-  //     // }, 1000);
   // }
 
 }

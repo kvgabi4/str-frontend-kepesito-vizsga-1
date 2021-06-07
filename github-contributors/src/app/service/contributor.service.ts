@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Contributor } from '../model/contributor';
-import { Repo } from '../model/repo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContributorService {
 
-  api_url: string = 'https://api.github.com/repos/angular/angular/contributors';
+  api_url: string = 'https://api.github.com/repos/angular/angular/scontributors';
 
   constructor(
     private http: HttpClient

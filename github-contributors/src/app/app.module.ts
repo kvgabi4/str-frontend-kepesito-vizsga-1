@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,10 +25,14 @@ import { SortPipe } from './pipe/sort.pipe'
     AppRoutingModule,
     HttpClientModule,
     InfiniteScrollModule,
-    NgxSpinnerModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 6000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [],
   providers: [],
   bootstrap: [AppComponent]
 })
