@@ -20,10 +20,11 @@ export class ListComponent implements OnInit {
 
   eventSubscription = fromEvent(window, "scroll").subscribe(() => {
     if (this.bottomReached()) {
-      this.actualContributors += 25;
       this.contributorService.getAll(this.page, this.actualContributors).subscribe(
         response => this.contributors = response
-      );
+        );
+      this.actualContributors += 25;
+      // console.log(this.actualContributors);
       // this.contributors$ = this.contributorService.getAll(this.page, this.actualContributors);
     }
   }, error => {
@@ -38,7 +39,7 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     this.contributorService.getAll(this.page, this.actualContributors).subscribe(
       response => {
-        this.contributors = response
+        this.contributors = response;
       }, error => {
         this.toastrService.error('Error loading contributors', 'Major Error');
       }
